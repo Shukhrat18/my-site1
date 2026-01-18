@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Портали таълимӣ - Барномаҳои компютерӣ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 📱💻 СИСТЕМАИ АДАПТИВ БАРОИ ТЕЛЕФОН ВА КОМПЮТЕР */
+        
+        :root {
+            /* Рангҳои асосӣ */
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2c3e50;
+            --secondary-light: #4a6491;
+            --success: #2ecc71;
+            --success-dark: #27ae60;
+            --info: #9b59b6;
+            --info-dark: #8e44ad;
+            --warning: #f39c12;
+            --warning-dark: #e67e22;
+            --danger: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --gray-light: #ecf0f1;
+            
+            /* Брейкпоинтҳо */
+            --mobile: 480px;
+            --tablet: 768px;
+            --desktop: 1024px;
+            --large-desktop: 1200px;
+            
+            /* Сояҳо */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.2);
+            --shadow-xl: 0 12px 24px rgba(0,0,0,0.25);
+            
+            /* Border radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+        }
+        
+        /* RESET ВА ОСНОВ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 📱 МОБИЛ МЕНЮ */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+        
+        .mobile-menu-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            list-style: none;
+        }
+        
+        .mobile-menu-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+            padding: 12px 8px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .mobile-menu-link i {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .mobile-menu-link.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* HEADER ВА НАВИГАТСИЯ */
+        .header {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+            padding: 15px 20px;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            background: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* КОНТЕЙНЕРИ АСОСӢ */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* САҲИФАИ АСОСӢ (ДАШБОРД) */
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 30px;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--info), var(--success));
+        }
+        
+        .welcome-title {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+        
+        .welcome-description {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .stat-card h3 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .stat-card p {
+            color: var(--gray);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* КАРТАҲОИ КУРС */
+        .courses-header {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+            padding: 40px 30px;
+            border-radius: var(--radius-xl);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .courses-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" opacity="0.1"><path d="M0,50 Q250,0 500,50 T1000,50 V100 H0 Z" fill="white"/></svg>') bottom center no-repeat;
+        }
+        
+        .courses-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .courses-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .semester-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: var(--radius-full);
+            margin-top: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            position: relative;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .course-icon {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2));
+        }
+        
+        .course-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-title {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .course-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--gray-light);
+        }
+        
+        .topic-count {
+            background: var(--gray-light);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        
+        .btn-start {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-start:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* САҲИФАИ МАВЗУҲО */
+        .topics-container {
+            display: none;
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .topics-container.active {
+            display: block;
+        }
+        
+        .topics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--gray-light);
+        }
+        
+        .topics-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .back-btn {
+            background: var(--gray);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .back-btn:hover {
+            background: var(--dark);
+            transform: translateX(-5px);
+        }
+        
+        .progress-container {
+            margin: 25px 0 35px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--gray-light);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--info));
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: var(--radius-full);
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .topic-btn {
+            background: white;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius-lg);
+            padding: 22px 20px;
+            text-align: right;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .topic-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+        
+        .topic-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .topic-btn:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .topic-number {
+            background: linear-gradient(135deg, var(--secondary-light), var(--primary));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+            margin-left: 15px;
+        }
+        
+        .topic-text {
+            flex-grow: 1;
+            text-align: right;
+            padding-left: 15px;
+        }
+        
+        /* САҲИФАИ ЛЕКСИЯ */
+        .lecture-container {
+            display: none;
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .lecture-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid var(--gray-light);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .lecture-title {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            flex-grow: 1;
+        }
+        
+        .lecture-meta {
+            background: var(--gray-light);
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+        
+        .lecture-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        
+        .lecture-content h3 {
+            color: var(--secondary-light);
+            margin: 35px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gray-light);
+            font-size: 1.5rem;
+            position: relative;
+        }
+        
+        .lecture-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .lecture-content h4 {
+            color: var(--dark);
+            margin: 28px 0 16px;
+            font-size: 1.3rem;
+        }
+        
+        .lecture-content p {
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+        
+        .lecture-content ul, .lecture-content ol {
+            margin: 22px 0 28px 35px;
+        }
+        
+        .lecture-content li {
+            margin-bottom: 16px;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .lecture-content ul li::before {
+            content: '▸';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+        
+        .lecture-content ol {
+            counter-reset: item;
+        }
+        
+        .lecture-content ol li {
+            counter-increment: item;
+        }
+        
+        .lecture-content ol li::before {
+            content: counter(item) '.';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: -25px;
+        }
+        
+        .note-box {
+            background: linear-gradient(135deg, #e8f4ff, #d1e7ff);
+            border-right: 5px solid var(--primary);
+            padding: 25px;
+            border-radius: var(--radius-lg);
+            margin: 30px 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .note-box h4 {
+            color: var(--secondary);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .note-box h4::before {
+            content: '💡';
+            margin-left: 10px;
+        }
+        
+        .lecture-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .lecture-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 28px;
+            border-radius: var(--radius-lg);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            justify-content: center;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .lecture-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lecture-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-prev {
+            background: var(--gray);
+        }
+        
+        .btn-next {
+            background: var(--success);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 50px 30px 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--info), var(--success));
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-logo p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            grid-column: 1 / -1;
+        }
+        
+        /* 📱📊 RESPONSIVE DESIGN - ТЕЛЕФОН ВА КОМПЮТЕР */
+        
+        /* БАРОИ ТЕЛЕФОН (480px то 767px) */
+        @media (max-width: 767px) {
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.6rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+            
+            .main-container {
+                padding: 15px;
+            }
+            
+            .welcome-section {
+                padding: 25px 20px;
+                margin-bottom: 25px;
+            }
+            
+            .welcome-title {
+                font-size: 1.6rem;
+            }
+            
+            .welcome-description {
+                font-size: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 20px 15px;
+            }
+            
+            .stat-card h3 {
+                font-size: 1.8rem;
+            }
+            
+            .courses-header {
+                padding: 30px 20px;
+                margin-bottom: 25px;
+            }
+            
+            .courses-title {
+                font-size: 1.8rem;
+            }
+            
+            .courses-subtitle {
+                font-size: 1rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .course-card {
+                max-width: 100%;
+            }
+            
+            .course-icon {
+                height: 120px;
+                font-size: 3rem;
+            }
+            
+            .course-content {
+                padding: 20px;
+            }
+            
+            .course-title {
+                font-size: 1.3rem;
+            }
+            
+            .topics-container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            
+            .topics-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .topics-title {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            
+            .topics-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .topic-btn {
+                padding: 18px 15px;
+                font-size: 1rem;
+            }
+            
+            .topic-number {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            
+            .lecture-container {
+                padding: 20px;
+            }
+            
+            .lecture-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .lecture-title {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            
+            .lecture-content {
+                font-size: 1rem;
+            }
+            
+            .lecture-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .lecture-controls {
+                flex-direction: column;
+            }
+            
+            .footer {
+                padding: 30px 20px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .mobile-menu-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding-bottom: 80px;
+            }
+        }
+        
+        /* БАРОИ ТАБЛЕТ (768px то 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .topics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nav-links {
+                gap: 5px;
+            }
+            
+            .nav-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* БАРОИ ДЕСКТОП (1024px то 1199px) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .courses-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .topics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        /* БАРОИ ДЕСКТОПИ КАЛОН (1200px+) */
+        @media (min-width: 1200px) {
+            .courses-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .topics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+        
+        /* БАРОИ ЛАНДСКЕЙП МОДЕ */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .header {
+                padding: 10px 20px;
+            }
+            
+            .welcome-section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .courses-header {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .course-icon {
+                height: 100px;
+            }
+            
+            .mobile-menu {
+                padding: 10px;
+            }
+            
+            .mobile-menu-link {
+                padding: 8px 5px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* TOUCH-FRIENDLY ЭЛЕМЕНТҲО */
+        button, 
+        .btn-start, 
+        .topic-btn, 
+        .nav-link, 
+        .mobile-menu-link,
+        .lecture-btn {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        /* ПЕШГИРӢ АЗ ЗУМ ДАР IOS */
+        @media screen and (max-width: 767px) {
+            input, 
+            select, 
+            textarea, 
+            button {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* СКРОЛЛИНГИ БЕХТАР */
+        .lecture-content,
+        .topics-grid {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* ДАРКИ ТАП БАРОИ МОБИЛ */
+        @media (hover: none) and (pointer: coarse) {
+            .topic-btn:hover,
+            .course-card:hover,
+            .stat-card:hover,
+            .nav-link:hover {
+                transform: none;
+            }
+            
+            .topic-btn:active,
+            .course-card:active,
+            .stat-card:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER ВА НАВИГАТСИЯ -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Портали таълимӣ</h1>
+                    <p>Семестри 2 - соли таҳсили 2025-2026</p>
+                </div>
+            </div>
+            
+            <!-- Мобил меню тугма -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Навигатсияи десктопӣ -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Асосӣ</span>
+                </a></li>
+                <li><a href="#office" class="nav-link" data-page="office">
+                    <i class="fas fa-file-word"></i>
+                    <span>Барномаҳои Офисӣ</span>
+                </a></li>
+                <li><a href="#programming" class="nav-link" data-page="programming">
+                    <i class="fas fa-code"></i>
+                    <span>Забонҳои барномасозӣ</span>
+                </a></li>
+                <li><a href="#structure" class="nav-link" data-page="structure">
+                    <i class="fas fa-desktop"></i>
+                    <span>Сохтори компютер</span>
+                </a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ОВЕРЛЕЙ БАРОИ МОБИЛ МЕНЮ -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- МОБИЛ МЕНЮ -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-items">
+            <li>
+                <a href="#home" class="mobile-menu-link active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Асосӣ</span>
+                </a>
+            </li>
+            <li>
+                <a href="#office" class="mobile-menu-link" data-page="office">
+                    <i class="fas fa-file-word"></i>
+                    <span>Офисӣ</span>
+                </a>
+            </li>
+            <li>
+                <a href="#programming" class="mobile-menu-link" data-page="programming">
+                    <i class="fas fa-code"></i>
+                    <span>Барномасозӣ</span>
+                </a>
+            </li>
+            <li>
+                <a href="#structure" class="mobile-menu-link" data-page="structure">
+                    <i class="fas fa-desktop"></i>
+                    <span>Компютер</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- КОНТЕЙНЕРИ АСОСӢ -->
+    <main class="main-container">
+        <!-- САҲИФАИ АСОСӢ (ДАШБОРД) -->
+        <div id="home" class="page active">
+            <section class="welcome-section">
+                <h1 class="welcome-title">Хуш омадед ба Портали таълимӣ!</h1>
+                <p class="welcome-description">
+                    Ин портал барои омӯзиши фанҳои компютерӣ дар семестри 2 таҳия шудааст. 
+                    Дар ин ҷо шумо метавонед дар бораи барномаҳои офисӣ, забонҳои барномасозӣ 
+                    ва сохтори компютерҳои фардӣ маълумоти пурра гиред.
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-file-word" style="color: var(--primary);"></i>
+                        <h3>17</h3>
+                        <p>Мавзӯъҳои офисӣ</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-code" style="color: var(--info);"></i>
+                        <h3>30</h3>
+                        <p>Забонҳои барномасозӣ</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-desktop" style="color: var(--success);"></i>
+                        <h3>17</h3>
+                        <p>Мавзӯъҳои компютерӣ</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-graduation-cap" style="color: var(--warning);"></i>
+                        <h3>64</h3>
+                        <p>Мавзӯъҳои умумӣ</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="courses-header">
+                <h2 class="courses-title">Курсҳои таълимӣ</h2>
+                <p class="courses-subtitle">Семестри 2 - соли таҳсили 2025-2026</p>
+                <div class="semester-badge">
+                    КОЛЛЕҶИ МАХСУСГАРДОНИДАШУДАИ ш.Бохтар | Омӯзгор Шухрат Зайнуллоев
+                </div>
+            </section>
+            
+            <div class="courses-grid">
+                <!-- КУРСИ БАРНОМАҲОИ ОФИСӢ -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">📊 Барномаҳои Офисӣ</h3>
+                        <p class="course-description">
+                            Омӯзиши Microsoft Word, Excel, PowerPoint, Access ва дигар барномаҳои офисӣ 
+                            бо тафсилот ва амалиёт. Аз сатҳи ибтидоӣ то пешрафта.
+                        </p>
+                        <div class="course-meta">
+                            <div class="topic-count">17 мавзӯъ</div>
+                            <button class="btn-start" data-course="office">
+                                <i class="fas fa-play"></i> Оғоз кардан
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- КУРСИ ЗАБОНҲОИ БАРНОМАСОЗӢ -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, var(--info), var(--info-dark));">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">💻 Забонҳои барномасозӣ</h3>
+                        <p class="course-description">
+                            Омӯзиши Python, JavaScript, Java, C++ ва дигар забонҳои барномасозӣ 
+                            аз сатҳи ибтидоӣ то пешрафта. Барои оғозкунандагон ва касбиён.
+                        </p>
+                        <div class="course-meta">
+                            <div class="topic-count">30 мавзӯъ</div>
+                            <button class="btn-start" data-course="programming">
+                                <i class="fas fa-play"></i> Оғоз кардан
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- КУРСИ СОХТОРИ КОМПЮТЕР -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, var(--success), var(--success-dark));">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">💻 Сохтори компютерҳои фардӣ</h3>
+                        <p class="course-description">
+                            Омӯзиши ҷузъҳои компютер, ҷамъкунӣ, танзимот, диагностика ва 
+                            технологияҳои нав. Барои донишҷӯёни ихтисоси системаи компютерӣ.
+                        </p>
+                        <div class="course-meta">
+                            <div class="topic-count">17 мавзӯъ</div>
+                            <button class="btn-start" data-course="structure">
+                                <i class="fas fa-play"></i> Оғоз кардан
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- САҲИФАИ БАРНОМАҲОИ ОФИСӢ -->
+        <div id="office-page" class="page">
+            <section class="courses-header">
+                <h2 class="courses-title">📊 Барномаҳои Офисӣ</h2>
+                <p class="courses-subtitle">17 мавзӯъи муфассал ва пурра дар бораи Microsoft Office</p>
+                <div class="semester-badge">
+                    Фани "Барномаҳои Офисӣ" - Соли таҳсили 2025-2026
+                </div>
+            </section>
+            
+            <div class="topics-container" id="office-topics">
+                <div class="topics-header">
+                    <h3 class="topics-title">Мавзӯъҳои Барномаҳои Офисӣ</h3>
+                    <button class="back-btn" data-back="office">
+                        <i class="fas fa-arrow-left"></i> Ба курсҳо
+                    </button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Пешрафт</span>
+                        <span id="office-progress-text">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="office-progress"></div>
+                    </div>
+                </div>
+                
+                <div class="topics-grid" id="office-topics-list">
+                    <!-- Мавзӯъҳо бо JavaScript пур карда мешаванд -->
+                </div>
+                
+                <div class="lecture-container" id="office-lecture-container">
+                    <!-- Мӯҳтавои лексия -->
+                </div>
+            </div>
+        </div>
+
+        <!-- САҲИФАИ ЗАБОНҲОИ БАРНОМАСОЗӢ -->
+        <div id="programming-page" class="page">
+            <section class="courses-header">
+                <h2 class="courses-title">💻 Забонҳои барномасозӣ</h2>
+                <p class="courses-subtitle">30 мавзӯъи муфассал дар бораи забонҳои барномасозӣ</p>
+                <div class="semester-badge">
+                    Фани "Забонҳои барномасозӣ" - Соли таҳсили 2025-2026
+                </div>
+            </section>
+            
+            <div class="topics-container" id="programming-topics">
+                <div class="topics-header">
+                    <h3 class="topics-title">Мавзӯъҳои Забонҳои барномасозӣ</h3>
+                    <button class="back-btn" data-back="programming">
+                        <i class="fas fa-arrow-left"></i> Ба курсҳо
+                    </button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Пешрафт</span>
+                        <span id="programming-progress-text">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="programming-progress"></div>
+                    </div>
+                </div>
+                
+                <div class="topics-grid" id="programming-topics-list">
+                    <!-- Мавзӯъҳо бо JavaScript пур карда мешаванд -->
+                </div>
+                
+                <div class="lecture-container" id="programming-lecture-container">
+                    <!-- Мӯҳтавои лексия -->
+                </div>
+            </div>
+        </div>
+
+        <!-- САҲИФАИ СОХТОРИ КОМПЮТЕР -->
+        <div id="structure-page" class="page">
+            <section class="courses-header">
+                <h2 class="courses-title">💻 Сохтори компютерҳои фардӣ</h2>
+                <p class="courses-subtitle">17 мавзӯъи муфассал дар бораи сохтори компютерҳо</p>
+                <div class="semester-badge">
+                    Фани "Сохтори компютерҳои фардӣ" - Соли таҳсили 2025-2026
+                </div>
+            </section>
+            
+            <div class="topics-container" id="structure-topics">
+                <div class="topics-header">
+                    <h3 class="topics-title">Мавзӯъҳои Сохтори компютер</h3>
+                    <button class="back-btn" data-back="structure">
+                        <i class="fas fa-arrow-left"></i> Ба курсҳо
+                    </button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Пешрафт</span>
+                        <span id="structure-progress-text">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="structure-progress"></div>
+                    </div>
+                </div>
+                
+                <div class="topics-grid" id="structure-topics-list">
+                    <!-- Мавзӯъҳо бо JavaScript пур карда мешаванд -->
+                </div>
+                
+                <div class="lecture-container" id="structure-lecture-container">
+                    <!-- Мӯҳтавои лексия -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Портали таълимӣ</h3>
+                <p>
+                    Барномаи таълимӣ барои донишҷӯёни курси 1 (11) ва 2 (9) 
+                    ихтисоси Системаи компютерӣ
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Курсҳо</h4>
+                <ul class="footer-links">
+                    <li><a href="#office" class="footer-link"><i class="fas fa-file-word"></i> Барномаҳои Офисӣ</a></li>
+                    <li><a href="#programming" class="footer-link"><i class="fas fa-code"></i> Забонҳои барномасозӣ</a></li>
+                    <li><a href="#structure" class="footer-link"><i class="fas fa-desktop"></i> Сохтори компютер</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Дастрасӣ</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" class="footer-link"><i class="fas fa-home"></i> Асосӣ</a></li>
+                    <li><a href="#" class="footer-link"><i class="fas fa-info-circle"></i> Дар бораи мо</a></li>
+                    <li><a href="#" class="footer-link"><i class="fas fa-envelope"></i> Тамос</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Иловагӣ</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link"><i class="fas fa-question-circle"></i> Кумак</a></li>
+                    <li><a href="#" class="footer-link"><i class="fas fa-download"></i> Дарёфт</a></li>
+                    <li><a href="#" class="footer-link"><i class="fas fa-cog"></i> Танзимот</a></li>
+                </ul>
+            </div>
+            
+            <div class="copyright">
+                © 2025–2026 · КОЛЛЕҶИ МАХСУСГАРДОНИДАШУДАИ ш.Бохтар · Омӯзгор Шухрат Зайнуллоев · Ҳамаи ҳуқуқҳо ҳифз шудаанд
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ДОДАҲОИ ҲАМАИ 3 КУРС
+        
+        const officeTopics = [
+            {id: 1, title: "Microsoft Word - асосҳои пурра"},
+            {id: 2, title: "Word - тарҳрезӣ ва услуби пурра"},
+            {id: 3, title: "Word - ҷадвалҳо, тасвирҳо ва графикҳо"},
+            {id: 4, title: "Word - саҳифабандӣ, чоп ва PDF"},
+            {id: 5, title: "Microsoft Excel - асосҳои пурра"},
+            {id: 6, title: "Excel - формулаҳои муфассал"},
+            {id: 7, title: "Excel - функсияҳои иловагӣ"},
+            {id: 8, title: "Excel - ҷадвалҳои динамикӣ (Pivot)"},
+            {id: 9, title: "Excel - графикҳо ва диаграммаҳо"},
+            {id: 10, title: "Excel - филтр, ҷустуҷӯ ва макро"},
+            {id: 11, title: "PowerPoint - асосҳои пурра"},
+            {id: 12, title: "PowerPoint - тарҳрезӣ ва дизайн"},
+            {id: 13, title: "PowerPoint - аниматсия ва гузариш"},
+            {id: 14, title: "PowerPoint - намоиш ва тақдим"},
+            {id: 15, title: "Access - пойгоҳи додаҳои пурра"},
+            {id: 16, title: "OneNote - дафтарчаи электронӣ"},
+            {id: 17, title: "Ҳамаи барномаҳо якҷоя - интегратсия"}
+        ];
+
+        const programmingTopics = [
+            {id: 1, title: "Чист барномасозӣ?"},
+            {id: 2, title: "Таърихи забонҳои барномасозӣ"},
+            {id: 3, title: "Python - забони оғозӣ"},
+            {id: 4, title: "JavaScript - забони веб"},
+            {id: 5, title: "HTML - сохтани вебсайт"},
+            {id: 6, title: "CSS - зебо кардани вебсайт"},
+            {id: 7, title: "Java - забони барномаҳои калон"},
+            {id: 8, title: "C++ - забони бозиҳо"},
+            {id: 9, title: "PHP - забони сервер"},
+            {id: 10, title: "SQL - забони пойгоҳи додаҳо"},
+            {id: 11, title: "C# - забони Microsoft"},
+            {id: 12, title: "Swift - забони Apple"},
+            {id: 13, title: "Kotlin - забони Android"},
+            {id: 14, title: "Go - забони Google"},
+            {id: 15, title: "R - забони омор ва илм"},
+            {id: 16, title: "Ruby - забони веби сода"},
+            {id: 17, title: "TypeScript - JavaScript-и беҳтар"},
+            {id: 18, title: "Dart - забони Flutter"},
+            {id: 19, title: "Rust - забони амниятӣ"},
+            {id: 20, title: "MATLAB - забони муҳандисӣ"},
+            {id: 21, title: "Scala - Java-и муосир"},
+            {id: 22, title: "Perl - забони матн"},
+            {id: 23, title: "Lua - забони бозиҳо"},
+            {id: 24, title: "Haskell - забони функсионалӣ"},
+            {id: 25, title: "Assembly - забони машинӣ"},
+            {id: 26, title: "Bash - забони система"},
+            {id: 27, title: "Visual Basic - забони Microsoft"},
+            {id: 28, title: "COBOL - забони тиҷорат"},
+            {id: 29, title: "Fortran - забони илм"},
+            {id: 30, title: "Чӣ забонро ёд гирем?"}
+        ];
+
+        const structureTopics = [
+            {id: 1, title: "Таърихи ташаккули компютерҳои фардӣ"},
+            {id: 2, title: "Архитектураи умумии компютер"},
+            {id: 3, title: "Процессор ва хусусиятҳои он"},
+            {id: 4, title: "Памятьҳои компютер (RAM, ROM, Кэш)"},
+            {id: 5, title: "Дискҳои сахт (HDD ва SSD)"},
+            {id: 6, title: "Системаи вуруд/хуруҷ (Input/Output)"},
+            {id: 7, title: "Платаи асосӣ (Motherboard)"},
+            {id: 8, title: "Блоки таъминкунандаи қувва (Power Supply)"},
+            {id: 9, title: "Картаҳои графикӣ (Video Cards)"},
+            {id: 10, title: "Интерфейсҳои беруна (USB, HDMI, Thunderbolt)"},
+            {id: 11, title: "Системаи сардоиш (Cooling System)"},
+            {id: 12, title: "BIOS/UEFI ва таъминоти нармафзор"},
+            {id: 13, title: "Ҷамъкунии компютер"},
+            {id: 14, title: "Диагностика ва ҳалли мушкилот"},
+            {id: 15, title: "Технологияҳои нави компютерӣ"},
+            {id: 16, title: "Амнияти сахтафзори компютер"},
+            {id: 17, title: "Ояндаи компютерҳои фардӣ"}
+        ];
+
+        // МӮҲТАВОИ ПУРРА АЗ САЙТҲОИ АСЛӢ
+        
+        const lectureContents = {
+            office: [
+                {
+                    title: "Microsoft Word - асосҳои пурра",
+                    content: `
+                        <h3>Microsoft Word - барномаи пурқуввати навиштан</h3>
+                        <p>Microsoft Word яке аз маъмултарин барномаҳои навиштани матн дар ҷаҳон аст. Он аз соли 1983 истифода мешавад ва имрӯз дар ҳама соҳаҳо: таҳсил, кор, тиҷорат ва илм истифода мешавад.</p>
+                        
+                        <div class="note-box">
+                            <h4>Чаро Word муҳим аст?</h4>
+                            <p>Word танҳо барои навиштани матн нест. Он барои тарҳрезӣ, таҳияи ҳуҷҷатҳои расмӣ, сохтани китоб, таблиғот ва ҳатто барои вебсайтҳо истифода мешавад. Донистани Word барои ҳар як касбе зарур аст.</p>
+                        </div>
+                        
+                        <h4>Қисмҳои асосии интерфейси Word:</h4>
+                        <ol>
+                            <li><strong>Quick Access Toolbar:</strong> Тугмаҳои зуддастрас (Save, Undo, Redo)</li>
+                            <li><strong>Ribbon:</strong> Навори асосӣ бо ҳамаи вазифаҳо</li>
+                            <li><strong>Document Area:</strong> Минтақаи навиштан</li>
+                            <li><strong>Status Bar:</strong> Намоиши вазъ (саҳифа, калимаҳо, забони)</li>
+                            <li><strong>Scroll Bars:</strong> Барои ҳаракат дар ҳуҷҷат</li>
+                        </ol>
+                        
+                        <div class="note-box">
+                            <h4>Қадами аввал дар Word:</h4>
+                            <p>1. Word-ро кушоед (Start → Microsoft Word ё дар Mac: Applications → Microsoft Word)</p>
+                            <p>2. Файли нав эҷод кунед (File → New → Blank Document)</p>
+                            <p>3. Навиштани матнро оғоз кунед</p>
+                            <p>4. Файлро захира кунед (File → Save ё Ctrl+S)</p>
+                            <p>5. Номи файл ва ҷойгиршавиро интихоб кунед</p>
+                        </div>
+                    `
+                },
+                // Дигар мавзӯъҳо...
+            ],
+            programming: [
+                {
+                    title: "Чист барномасозӣ?",
+                    content: `
+                        <h3>Чист барномасозӣ?</h3>
+                        <p>Барномасозӣ истеҳсоли нармафзорҳо (софтварҳо) барои компютер мебошад. Ин кор бо навиштани коди компютерӣ (коди барномавӣ) иҷро мешавад.</p>
+                        
+                        <h4>Барои чӣ барномасозӣ лозим аст?</h4>
+                        <ol>
+                            <li>Барои сохтани барномаҳои компютерӣ</li>
+                            <li>Барои сохтани вебсайтҳо ва барномаҳои мобилӣ</li>
+                            <li>Барои ҳал кардани мушкилоти гуногун</li>
+                            <li>Барои корҳои таҳлили маълумот</li>
+                        </ol>
+                        
+                        <div class="note-box">
+                            <h4>Қайдҳои муҳим:</h4>
+                            <p>Барномасозӣ ҳамчун "дастӣ" мебошад, ки компютерро ба мо мефаҳмонад, ки чӣ корҳоро анҷом диҳад. Барои оғози кор аз як забон мисли Python оғоз кунед, ки осон фаҳмида мешавад.</p>
+                        </div>
+                    `
+                },
+                // Дигар мавзӯъҳо...
+            ],
+            structure: [
+                {
+                    title: "Таърихи ташаккули компютерҳои фардӣ",
+                    content: `
+                        <h3>Таърихи ташаккули компютерҳои фардӣ</h3>
+                        <p>Компютерҳои фардӣ дар давоми чанд даҳсолаи охир таҳаввули зудро аз сар гузаронанд. Аввалин компютерҳои фардӣ дар солҳои 1970-ум пайдо шуданд.</p>
+                        
+                        <h4>Марҳилаҳои асосии таҳаввул:</h4>
+                        <ol>
+                            <li><strong>Даҳсолаи 1970:</strong> Компютерҳои хонагӣ мисли Altair 8800, ки бо дастбораҳои механикӣ кор мекард</li>
+                            <li><strong>Даҳсолаи 1980:</strong> IBM PC (1981) ва Macintosh (1984) ки интерфейси графикиро оварданд</li>
+                            <li><strong>Даҳсолаи 1990:</strong> Ру ба ру шудани график ва Windows 95 ки дастрасиро осон кард</li>
+                            <li><strong>Даҳсолаи 2000:</strong> Интернет ва компютерҳои дастӣ (ноутбукҳо) паҳн шуданд</li>
+                            <li><strong>Даҳсолаи 2010 то ҳол:</strong> Таҳаввули сифатӣ ва интерфейсҳои истифодабарии осон</li>
+                        </ol>
+                        
+                        <p>Имрӯз компютерҳои фардӣ ба воситаи технологӣ ва барномаҳои гуногун дар ҳаёти мо ҷойгиранд.</p>
+                    `
+                },
+                // Дигар мавзӯъҳо...
+            ]
+        };
+
+        // ФУНКСИЯҲОИ АСОСӢ
+        
+        let currentCourse = '';
+        let currentLecture = 1;
+
+        function showPage(pageId) {
+            // Пӯшидани ҳамаи саҳифаҳо
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Намоиш додани саҳифаи интихобшуда
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+            }
+            
+            // Нав кардани навигатсияи десктопӣ
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const desktopLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+            if (desktopLink) {
+                desktopLink.classList.add('active');
+            }
+            
+            // Нав кардани навигатсияи мобилӣ
+            document.querySelectorAll('.mobile-menu-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const mobileLink = document.querySelector(`.mobile-menu-link[data-page="${pageId === 'home' ? 'home' : pageId.replace('-page', '')}"]`);
+            if (mobileLink) {
+                mobileLink.classList.add('active');
+            }
+            
+            // Скролл ба болои саҳифа
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            
+            // Пӯшидани мобил меню
+            closeMobileMenu();
+            
+            // Илова кардани hash ба URL
+            history.pushState(null, null, `#${pageId === 'home' ? '' : pageId.replace('-page', '')}`);
+        }
+
+        // Функсияҳои мобил меню
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.getElementById('mobileMenuOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileMenuOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+
+        // Функсия барои оғози курс
+        function startCourse(courseId) {
+            currentCourse = courseId;
+            currentLecture = 1;
+            showPage(`${courseId}-page`);
+            
+            setTimeout(() => {
+                showTopics(courseId);
+            }, 100);
+        }
+
+        // Функсия барои намоиши мавзӯъҳо
+        function showTopics(courseId) {
+            const topicsContainer = document.getElementById(`${courseId}-topics`);
+            const topicsList = document.getElementById(`${courseId}-topics-list`);
+            const lectureContainer = document.getElementById(`${courseId}-lecture-container`);
+            
+            // Пӯшидани лексия
+            if (lectureContainer) {
+                lectureContainer.style.display = 'none';
+            }
+            
+            // Намоиш додани мавзӯъҳо
+            topicsContainer.classList.add('active');
+            topicsList.style.display = 'grid';
+            
+            // Пур кардани рӯйхати мавзӯъҳо
+            let topics = [];
+            switch(courseId) {
+                case 'office':
+                    topics = officeTopics;
+                    break;
+                case 'programming':
+                    topics = programmingTopics;
+                    break;
+                case 'structure':
+                    topics = structureTopics;
+                    break;
+            }
+            
+            topicsList.innerHTML = '';
+            topics.forEach(topic => {
+                const topicBtn = document.createElement('button');
+                topicBtn.className = 'topic-btn';
+                topicBtn.innerHTML = `
+                    <div class="topic-number">${topic.id}</div>
+                    <div class="topic-text">${topic.title}</div>
+                `;
+                
+                // Ранг кардани тугмаҳо
+                if (topic.id <= 5) {
+                    topicBtn.style.borderLeftColor = 'var(--primary)';
+                } else if (topic.id <= 10) {
+                    topicBtn.style.borderLeftColor = 'var(--info)';
+                } else if (topic.id <= 15) {
+                    topicBtn.style.borderLeftColor = 'var(--success)';
+                } else {
+                    topicBtn.style.borderLeftColor = 'var(--warning)';
+                }
+                
+                topicBtn.addEventListener('click', () => {
+                    showLecture(courseId, topic.id);
+                });
+                
+                topicsList.appendChild(topicBtn);
+            });
+            
+            // Барқарор кардани пешрафт
+            updateProgress(courseId, 0);
+        }
+
+        // Функсия барои намоиши лексия
+        function showLecture(courseId, lectureId) {
+            const topicsList = document.getElementById(`${courseId}-topics-list`);
+            const lectureContainer = document.getElementById(`${courseId}-lecture-container`);
+            const progressBar = document.getElementById(`${courseId}-progress`);
+            const progressText = document.getElementById(`${courseId}-progress-text`);
+            
+            currentCourse = courseId;
+            currentLecture = lectureId;
+            
+            // Пӯшидани рӯйхати мавзӯъҳо
+            topicsList.style.display = 'none';
+            
+            // Намоиш додани лексия
+            lectureContainer.style.display = 'block';
+            
+            // Омода кардани мӯҳтаво
+            let lectureTitle = '';
+            let lectureContent = '';
+            
+            switch(courseId) {
+                case 'office':
+                    lectureTitle = officeTopics[lectureId - 1]?.title || 'Мавзӯъ';
+                    lectureContent = lectureContents.office[0]?.content || '<p>Мӯҳтаво дар ҳоли таҳия аст.</p>';
+                    break;
+                case 'programming':
+                    lectureTitle = programmingTopics[lectureId - 1]?.title || 'Мавзӯъ';
+                    lectureContent = lectureContents.programming[0]?.content || '<p>Мӯҳтаво дар ҳоли таҳия аст.</p>';
+                    break;
+                case 'structure':
+                    lectureTitle = structureTopics[lectureId - 1]?.title || 'Мавзӯъ';
+                    lectureContent = lectureContents.structure[0]?.content || '<p>Мӯҳтаво дар ҳоли таҳия аст.</p>';
+                    break;
+            }
+            
+            lectureContainer.innerHTML = `
+                <div class="lecture-header">
+                    <h2 class="lecture-title">${lectureTitle}</h2>
+                    <div class="lecture-meta">Мавзӯъи ${lectureId} аз ${getTotalTopics(courseId)}</div>
+                </div>
+                
+                <div class="lecture-content">
+                    ${lectureContent}
+                </div>
+                
+                <div class="lecture-controls">
+                    <button class="lecture-btn btn-prev" onclick="prevLecture()">
+                        <i class="fas fa-arrow-left"></i> Мавзӯи қаблӣ
+                    </button>
+                    <button class="lecture-btn" onclick="showTopics('${courseId}')">
+                        <i class="fas fa-list"></i> Ба рӯйхат
+                    </button>
+                    <button class="lecture-btn btn-next" onclick="nextLecture()">
+                        Мавзӯи навбатӣ <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Нав кардани сатҳи пешрафт
+            updateProgress(courseId, lectureId);
+            
+            // Скролл ба болои саҳифа
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Функсияҳои идоракунии лексия
+        function nextLecture() {
+            const total = getTotalTopics(currentCourse);
+            const nextId = currentLecture < total ? currentLecture + 1 : 1;
+            showLecture(currentCourse, nextId);
+        }
+
+        function prevLecture() {
+            const total = getTotalTopics(currentCourse);
+            const prevId = currentLecture > 1 ? currentLecture - 1 : total;
+            showLecture(currentCourse, prevId);
+        }
+
+        // Функсияҳои ёрирасон
+        function getTotalTopics(courseId) {
+            switch(courseId) {
+                case 'office': return officeTopics.length;
+                case 'programming': return programmingTopics.length;
+                case 'structure': return structureTopics.length;
+                default: return 0;
+            }
+        }
+
+        function updateProgress(courseId, currentId) {
+            const progressBar = document.getElementById(`${courseId}-progress`);
+            const progressText = document.getElementById(`${courseId}-progress-text`);
+            const total = getTotalTopics(courseId);
+            
+            if (progressBar && progressText) {
+                const progress = Math.round((currentId / total) * 100);
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${progress}%`;
+            }
+        }
+
+        // ТАНЗИМОТИ АВВАЛӢ
+        document.addEventListener('DOMContentLoaded', () => {
+            // Навигатсияи десктопӣ
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    showPage(pageId === 'home' ? 'home' : `${pageId}-page`);
+                });
+            });
+            
+            // Навигатсияи мобилӣ
+            document.querySelectorAll('.mobile-menu-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    showPage(pageId === 'home' ? 'home' : `${pageId}-page`);
+                });
+            });
+            
+            // Тугмаи мобил меню
+            document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobileMenuOverlay').addEventListener('click', closeMobileMenu);
+            
+            // Тугмаҳои оғози курс
+            document.querySelectorAll('.btn-start').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const courseId = btn.getAttribute('data-course');
+                    startCourse(courseId);
+                });
+            });
+            
+            // Тугмаҳои бозгашт
+            document.querySelectorAll('.back-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const courseId = btn.getAttribute('data-back');
+                    showPage('home');
+                });
+            });
+            
+            // Навигатсия бо hash
+            window.addEventListener('hashchange', () => {
+                const hash = window.location.hash.substring(1);
+                if (hash === 'office' || hash === 'programming' || hash === 'structure') {
+                    startCourse(hash);
+                } else if (hash === '') {
+                    showPage('home');
+                }
+            });
+            
+            // Навигатсия бо тугмаҳои клавиатура
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevLecture();
+                if (e.key === 'ArrowRight') nextLecture();
+                if (e.key === 'Escape') showTopics(currentCourse);
+            });
+            
+            // Навигатсияи аввалӣ
+            const hash = window.location.hash.substring(1);
+            if (hash === 'office' || hash === 'programming' || hash === 'structure') {
+                startCourse(hash);
+            }
+            
+            // Пӯшидани мобил меню ҳангоми resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Пешгирӣ аз тап дар элементҳои бузург
+            document.addEventListener('touchstart', (e) => {
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            // Илова кардани класс барои тап
+            document.addEventListener('touchstart', function() {}, {passive: true});
+        });
+    </script>
+</body>
+</html>
